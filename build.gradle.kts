@@ -64,6 +64,6 @@ tasks.register<Copy>("replaceYml") {
     }
 }
 
-tasks.named("processResources") {
+tasks.named("classes") {
     dependsOn("replaceYml")
 }
