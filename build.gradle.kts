@@ -42,25 +42,16 @@ tasks.withType<Test> {
 val localProperties = Properties()
 file("local.properties").inputStream().use { localProperties.load(it) }
 
-val host: String = localProperties.getProperty("host")
-val dbName: String = localProperties.getProperty("database_name")
-val dbUsername: String = localProperties.getProperty("database_username")
-val dbPassword: String = localProperties.getProperty("database_password")
-
-val ymlHostPlaceholder = "{HOST}"
-val ymlDbNamePlaceholder = "{DATABASE_NAME}"
-val ymlDbUserNamePlaceholder = "{DATABASE_USERNAME}"
-val ymlDbPasswordPlaceholder = "{DATABASE_PASSWORD}"
-
 tasks.register<Copy>("replaceYml") {
     from("src/main/resources")
     include("application.yml")
     into("build/resources/main")
     filter { line ->
-        line.replace(ymlHostPlaceholder, host)
-            .replace(ymlDbNamePlaceholder, dbName)
-            .replace(ymlDbUserNamePlaceholder, dbUsername)
-            .replace(ymlDbPasswordPlaceholder, dbPassword)
+        var newLine = line
+        localProperties.forEach { entry ->
+            newLine = newLine.replace("{${entry.key}}", entry.value as String)
+        }
+        newLine
     }
 }
 
