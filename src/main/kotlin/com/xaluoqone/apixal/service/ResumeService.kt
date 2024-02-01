@@ -1,15 +1,15 @@
 package com.xaluoqone.apixal.service
 
 import com.xaluoqone.apixal.beans.AXResume
-import com.xaluoqone.apixal.db.dao.TResumeDao
+import com.xaluoqone.apixal.db.dao.ResumeDao
 import org.springframework.stereotype.Service
 
 @Service
 class ResumeService(
-    private val tResumeDao: TResumeDao
+    private val resumeDao: ResumeDao
 ) {
     suspend fun getAllAXResumes(): List<AXResume> {
-        val res = tResumeDao.selectAllResumes() ?: listOf()
+        val res = resumeDao.selectAll() ?: listOf()
         return res.map {
             AXResume(id = it.id!!, name = it.name, url = it.url)
         }

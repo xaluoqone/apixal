@@ -5,7 +5,7 @@ import org.apache.ibatis.annotations.Mapper
 import org.apache.ibatis.annotations.Select
 
 @Mapper
-interface TResumeDao {
-    @Select("SELECT * FROM ax_resume")
-    suspend fun selectAllResumes(): List<TResume>?
+interface ResumeDao {
+    @Select("select * from ax_resume")
+    fun selectAll(): List<TResume>?
 }
