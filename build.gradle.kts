@@ -26,6 +26,13 @@ dependencies {
     implementation("org.jetbrains.kotlin:kotlin-reflect")
     runtimeOnly("com.mysql:mysql-connector-j")
     testImplementation("org.springframework.boot:spring-boot-starter-test")
+
+    val coroutinesVersion = "1.8.0-RC2"
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutinesVersion")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-reactor:$coroutinesVersion")
+
+    val mybatisVersion = "3.0.3"
+    implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
 }
 
 tasks.withType<KotlinCompile> {
