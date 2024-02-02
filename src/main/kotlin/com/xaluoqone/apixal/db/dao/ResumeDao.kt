@@ -10,6 +10,6 @@ interface ResumeDao {
     @Select("select * from ax_resume")
     fun selectAll(): List<TResume>?
 
-    @Insert
+    @Insert("insert into ax_resume value (#{id},#{name},#{url})")
     fun insertOne(resume: TResume): Int
 }
