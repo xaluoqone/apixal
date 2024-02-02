@@ -33,6 +33,12 @@ dependencies {
 
     val mybatisVersion = "3.0.3"
     implementation("org.mybatis.spring.boot:mybatis-spring-boot-starter:$mybatisVersion")
+
+    val hutoolVersion = "5.8.25"
+    implementation("cn.hutool:hutool-core:$hutoolVersion")
+
+    val okioVersion = "3.7.0"
+    implementation("com.squareup.okio:okio:$okioVersion")
 }
 
 tasks.withType<KotlinCompile> {

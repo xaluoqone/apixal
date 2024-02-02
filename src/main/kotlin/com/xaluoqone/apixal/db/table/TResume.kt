@@ -1,11 +1,9 @@
 package com.xaluoqone.apixal.db.table
 
+import com.xaluoqone.apixal.exts.longId
+
 data class TResume(
-    val id: Long? = null,
+    val id: Long = longId(),
     val name: String,
     val url: String,
 )
-
-fun resume(name: String, url: String): TResume {
-    return TResume(null, name, url)
-}
