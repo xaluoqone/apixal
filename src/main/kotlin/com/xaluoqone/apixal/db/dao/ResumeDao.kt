@@ -10,9 +10,6 @@ interface ResumeDao {
     @Select("select * from ax_resume")
     fun selectAll(): List<TResume>?
 
-    @Select("select * from ax_resume where id=#{id}")
-    fun selectById(id: Long): TResume?
-
     @Insert
     fun insertOne(resume: TResume): Int
 }
